@@ -1,12 +1,16 @@
+'use state'
 
-
-import Image from 'next/image'
 import IList from '../type/iList'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function List(props:{list:IList[]}) {
 
     const [list, setList] = useState(props.list)
+
+    const [newTodo, setNewTodo] = useState<IList>({
+        id: list.length,
+        info: ""
+    })
 
   return (
   
@@ -14,26 +18,32 @@ export default function List(props:{list:IList[]}) {
     <section className='flex justify-center p-20'>
 
         
-        <div className=''>
+        <div className='flex flex-col gap-5'>
+            
             <h1 className='flex justify-center'>
-                Task List
+               Task List
             </h1>
-            {list.map((t) => (
-                <ul>
-                    <p>
-                        {t.id}
-                    </p>
-                    <ol>
-                        <li>
-                            {t.info}
-                        </li>
-                    </ol>
-                </ul>
-            ))}
-            <input placeholder='  text' type="text" className='outline'/>
-            <div className='flex justify-center'>
-                <button>add</button>
+            
+            <div>
+                {list.map((t) => (
+                    <ul className='flex gap-5'>
+                        <p>
+                            {t.id}
+                        </p>
+                        <ol>
+                            <li>
+                                {t.info}
+                            </li>
+                        </ol>
+                    </ul>
+                ))}
             </div>
+
+            <div className='flex flex-col'>
+                <input placeholder='  text' type="text" className='outline-none'/>
+                <button className='outline'>add</button>
+            </div>
+
         </div>
 
       </section>

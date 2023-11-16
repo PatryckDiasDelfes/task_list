@@ -1,40 +1,24 @@
-import Image from 'next/image'
+'use client'
+
 import IList from '../type/iList'
 import { useState } from 'react'
+import List from './list'
 
-export default function TaskList(props:{list:IList[]}) {
-    const [list, setList] = useState(props.list)
-  
+export default function TaskList() {
+    
+    let tasklist:IList[] = [
+        {id: 0, info:"aa"},
+        {id: 1, info:"ss"},
+        {id: 2, info:"dd"},
+        {id: 3, info:"ff"},
+        {id: 4, info:"gg"},
+        {id: 5, info:"hh"},
+        {id: 6, info:"jj"},
+        {id: 7, info:"kk"}        
+    ]
     return (
-  
-    <>
-    <section className='flex justify-center p-20'>
-
-        
-        <div className=''>
-            <h1 className='flex justify-center'>
-                Task List
-            </h1>
-            {list.map((t) => (
-                <ul>
-                    <p>
-                        {t.id}
-                    </p>
-                    <ol>
-                        <li>
-                            {t.info}
-                        </li>
-                    </ol>
-                </ul>
-            ))}
-            <input placeholder='  text' type="text" className='outline'/>
-            <div className='flex justify-center'>
-                <button>add</button>
-            </div>
-        </div>
-
-      </section>
-    </>
-
+      <>
+        <List list={tasklist}/>
+      </>
   )
 }
