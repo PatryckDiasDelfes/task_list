@@ -15,15 +15,13 @@ export default function List(props:{list:IList[]}) {
   return (
   
     <>
-    <section className='flex justify-center p-20'>
-
-        
-        <div className='flex flex-col gap-5'>
+  
+        <div className='flex flex-col gap-5 justify-center p-10'>
             
             <h1 className='flex justify-center'>
                Task List
             </h1>
-            
+
             <div>
                 {list.map((t) => (
                     <ul className='flex gap-5'>
@@ -31,22 +29,19 @@ export default function List(props:{list:IList[]}) {
                             {t.id}
                         </p>
                         <ol>
-                            <li>
-                                {t.info}
-                            </li>
+                            <input type="text" value={t.info} />
                         </ol>
                     </ul>
                 ))}
             </div>
 
-            <div className='flex flex-col'>
-                <input placeholder='  text' type="text" className='outline-none'/>
+            <div className='flex flex-col gap-3'>
+                <input placeholder='  text' className='outline-dashed'/>
                 <button className='outline'>add</button>
             </div>
 
         </div>
 
-      </section>
     </>
 
   )
