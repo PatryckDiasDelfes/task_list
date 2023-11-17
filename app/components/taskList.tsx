@@ -10,11 +10,8 @@ export default function TaskList() {
         {id: 0, info:"aa"},
         {id: 1, info:"ss"},
         {id: 2, info:"dd"},
-        {id: 3, info:"ff"},
-        {id: 4, info:"gg"},
-        {id: 5, info:"hh"},
-        {id: 6, info:"jj"},
-        {id: 7, info:"kk"}        
+        {id: 3, info:"ff"}
+             
     ]
     return (
       <>

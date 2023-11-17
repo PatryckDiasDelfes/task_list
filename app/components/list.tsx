@@ -12,6 +12,21 @@ export default function List(props:{list:IList[]}) {
         info: ""
     })
 
+    function add() {
+        setList([...list, newTodo])
+    }
+
+    function dlt(id: number) {
+        const updatedList = list.filter(i => i.id != id)
+        setList(updatedList)
+    }
+
+    function upd(id: number, newValue: string) {
+        const updList = list.map((t) =>
+            t.id === id ? { ...t, info: newValue } : t
+        );
+    }
+
   return (
   
     <>
@@ -29,15 +44,16 @@ export default function List(props:{list:IList[]}) {
                             {t.id}
                         </p>
                         <ol>
-                            <input type="text" value={t.info} />
+                            <input type="text" onChange={() => {upd(t.id, t.info)}} defaultValue={t.info}/>
+                            <button onClick={() => {dlt(t.id)}}>x</button>
                         </ol>
                     </ul>
                 ))}
             </div>
 
             <div className='flex flex-col gap-3'>
-                <input placeholder='  text' className='outline-dashed'/>
-                <button className='outline'>add</button>
+                <input onChange={(e) => setNewTodo({...newTodo, info:e.target.value, id:list.length})} placeholder='  text' className='outline-dotted'/>
+                <button onClick={() => {add()}} className='outline'>add</button>
             </div>
 
         </div>
